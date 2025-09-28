@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOPPEO STORE - Tu Tienda de Moda</title>
+    <style>
+        /* === ESTILOS GENERALES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* === HEADER MODERNO === */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #34495e;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* === CONTENEDOR PRINCIPAL === */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* === SECCIÓN PRODUCTOS === */
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border: 3px solid #f8f9fa;
+        }
+
+        .producto h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .precio {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .descripcion {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .btn-comprar {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-comprar:hover {
+            background: linear-gradient(135deg, #219652, #27ae60);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        /* === CARRITO DE COMPRAS === */
+        .carrito {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .carrito h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        #lista-carrito {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        #lista-carrito li {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            font-weight: 500;
+        }
+
+        .carrito p {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .carrito button {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .carrito button:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: scale(1.05);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            nav a {
+                font-size: 1rem;
+            }
+            
+            .productos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛍️ SHOPPEO STORE</h1>
+        <nav>
+            <a href="#">🏠 Inicio</a>
+            <a href="#">👔 Hombres</a>
+            <a href="#">👗 Mujeres</a>
+            <a href="#">👶 Niños</a>
+            <a href="#">📞 Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="productos">
+            <div class="producto" id="producto-1">
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop" alt="Camisa elegante">
+                <h3>Camisa Elegante Premium</h3>
+                <p class="precio">$45.000</p>
+                <p class="descripcion">Camisa de algodón 100% premium, perfecta para ocasiones especiales y reuniones de negocios.</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito(1)">🛒 Agregar al Carrito</button>
+            </div>
+
+            <div class="producto" id="producto-2">
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop" alt="Jeans modernos">
+                <h3>Jeans Modernos</h3>
+                <p class="precio">$89.000</p>
+                <p class="descripcion">Jeans ajustados color azul oscuro, tendencia urbana con máximo confort.</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito(2)">🛒 Agregar al Carrito</button>
+            </div>
+
+            <div class="producto" id="producto-3">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=400&fit=crop" alt="Vestido verano">
+                <h3>Vestido de Verano</h3>
+                <p class="precio">$67.000</p>
+                <p class="descripcion">Vestido ligero y fresco, ideal para días cálidos. Disponible en múltiples colores.</p>
+                <button class="btn-comprar" onclick="agregarAlCarrito(3)">🛒 Agregar al Carrito</button>
+            </div>
+        </section>
+
+        <div class="carrito">
+            <h2>🛒 Carrito de Compras</h2>
+            <ul id="lista-carrito">
+                <li>Tu carrito está vacío</li>
+            </ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="vaciarCarrito()">🗑️ Vaciar Carrito</button>
+        </div>
+    </main>
+
+    <script>
+        // === JAVASCRIPT PARA LA INTERACTIVIDAD ===
+        let carrito = [];
+        let total = 0;
+
+        function agregarAlCarrito(idProducto) {
+            const productoElement = document.getElementById(`producto-${idProducto}`);
+            const nombre = productoElement.querySelector('h3').textContent;
+            const precioTexto = productoElement.querySelector('.precio').textContent;
+            const precio = parseInt(precioTexto.replace('$', '').replace('.', ''));
+            
+            // Agregar producto al carrito
+            carrito.push({
+                id: idProducto,
+                nombre: nombre,
+                precio: precio
+            });
+            
+            // Actualizar visualización
+            actualizarCarrito();
+            
+            // Efecto visual de confirmación
+            const boton = productoElement.querySelector('.btn-comprar');
+            const textoOriginal = boton.textContent;
+            boton.textContent = '✅ ¡Agregado!';
+            boton.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            
+            setTimeout(() => {
+                boton.textContent = textoOriginal;
+                boton.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            }, 1500);
+        }
+
+        function actualizarCarrito() {
+            const listaCarrito = document.getElementById('lista-carrito');
+            const totalElement = document.getElementById('total');
+            
+            // Limpiar lista
+            listaCarrito.innerHTML = '';
+            total = 0;
+            
+            // Si el carrito está vacío
+            if (carrito.length === 0) {
+                listaCarrito.innerHTML = '<li>Tu carrito está vacío</li>';
+                totalElement.textContent = '0';
+                return;
+            }
+            
+            // Mostrar productos en carrito
+            carrito.forEach((producto, index) => {
+                const item = document.createElement('li');
+                item.innerHTML = `
+                    ${producto.nombre} - $${producto.precio.toLocaleString()}
+                    <button onclick="eliminarDelCarrito(${index})" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; margin-left: 10px; cursor: pointer;">❌</button>
+                `;
+                listaCarrito.appendChild(item);
+                total += producto.precio;
+            });
+            
+            // Actualizar total
+            totalElement.textContent = total.toLocaleString();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            if (carrito.length === 0) {
+                alert('🛒 Tu carrito ya está vacío');
+                return;
+            }
+            
+            if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+                carrito = [];
+                actualizarCarrito();
+                alert('🗑️ Carrito vaciado correctamente');
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SHOPPEO STORE - Tu tienda de ropa online. Encuentra las mejores prendas al mejor precio.">
+    <title>SHOPPEO STORE - Tienda de Ropa Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🛍️ SHOPPEO STORE</h1>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#hombres">Hombres</a>
+            <a href="#mujeres">Mujeres</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main id="inicio">
+        <!-- Tus productos aquí -->
+    </main>
+
+    <footer id="contacto" style="background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 3rem;">
+        <h3>SHOPPEO STORE</h3>
+        <p>📍 Dirección: Tu dirección aquí</p>
+        <p>📞 Teléfono: +57 300 123 4567</p>
+        <p>✉️ Email: info@shoppeostore.com</p>
+        <p>© 2024 SHOPPEO STORE. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
